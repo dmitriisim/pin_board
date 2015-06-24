@@ -7,4 +7,6 @@
 				%p.user
 				Submitted by:
 				= pin.user.email
+.text-center
+	=will_paginate @posts, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0				
 			

@@ -1,27 +1,57 @@
 !!! 5
 %html
 %head
-	%title 4Photographer 
+	%title Pin Board
 	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
+	
+	
 %body
-	%nav.navbar.navbar-default
+	%nav.navbar.navbar-default.navbar-static-top
 		.container
-			.navbar-brand= link_to "4Photographer", root_path
-
-			- if user_signed_in?
-				%ul.nav.navbar-nav.navbar-right
-					%li= link_to "New Pin", new_pin_path
-					%li= link_to "Account", edit_user_registration_path
-					%li= link_to "Sign Out", destroy_user_session_path, method: :delete
-			- else
-				%ul.nav.navbar-nav.navbar-right
-					%li= link_to "Sign Up", new_user_registration_path
-					%li= link_to "Sign In", new_user_session_path
+			.navbar-header	
+				%button.navbar-toggle.collapsed{"type" => "button", "data-target" => "#navbar", "data-toggle" => "collapse", "aria-controls" => "navbar", "aria-expanded" => "false"}
+					%span.sr-only Toggle navigation
+					%span.icon-bar
+					%span.icon-bar
+					%span.icon-bar
+				.navbar-brand= link_to image_tag('top_logo.png'), root_path	
+			#navbar.navbar-collapse.collapse{"aria-expanded" => "false", "style" => "height: 1px"}
+				- if user_signed_in?
+					%ul.nav.navbar-nav
+						%li= link_to "Community", '###'
+						%li= link_to "Categories", '###'
+						%li= link_to "Blog", '###'
+					%ul.nav.navbar-nav.navbar-right	
+						%li= link_to "New Pin", new_pin_path
+						%li= link_to "Account", edit_user_registration_path
+						%li= link_to "Sign Out", destroy_user_session_path, method: :delete
+				- else	
+					%ul.nav.navbar-nav
+						%li= link_to "Community", '###'
+						%li= link_to "Categories", '###'
+						%li= link_to "Blog", '###'
+					%ul.nav.navbar-nav.navbar-right
+						%li= link_to "Sign Up", new_user_registration_path
+						%li= link_to "Sign In", new_user_session_path
 
 	.container
 		- flash.each do |name, msg|
 			= content_tag :div, msg, class: "alert alert-info"
-			
+
 		= yield
+		
+		.clear-both
+	.footer
+		%ul.social-icons
+			%li
+				= link_to fa_stacked_icon('facebook', base: 'square-o'), '###', target: '_blank'
+				= link_to fa_stacked_icon('twitter', base: 'square-o'), '###', target: '_blank'
+				= link_to fa_stacked_icon('dribbble', base: 'square-o'), '###', target: '_blank'
+				= link_to fa_stacked_icon('instagram', base: 'square-o'), '###', target: '_blank'
+				= link_to fa_stacked_icon('reddit', base: 'square-o'), '###', target: '_blank'
+			%li	
+				=image_tag "logo.png", class: "bottom-logo" 
+				%p #invisibleninja	
+					
