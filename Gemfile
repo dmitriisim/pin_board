@@ -21,6 +21,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'coffee-script-source', '1.8.0'
+
 group :production do
 	gem 'pg'
 end
